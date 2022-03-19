@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--<record id="_telecom_cron" model="ir.cron">
+        <field name="name">telecom.cron</field>
+        <field name="model_id" ref="model_boc_api"></field>
+        <field name="state">code</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="code">model._telecom_cron()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">months</field>
+        <field name="numbercall">-1</field>
+        <field name="nextcall" eval="((DateTime.now() + (relativedelta(months=1))).replace(day=1, hour=2, minute=0, second=0, microsecond=0)).strftime('%m/%d/%Y %H:%M:%S')" />
+
+    </record>-->
+
+
+    <record id="sale_sub_postbilling_form" model="ir.ui.view">
+        <field name="name">Post billed invoices</field>
+        <field name="model">sale.subscription</field>
+        <!--<field name="type">form</field>-->
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/group[1]/group/field[@name='close_reason_id']" position="before">
+                <field name="post_billed"/>
+                
+            </xpath>
+        </field>
+    </record>
+    
+
+    
+
+    <!--<record id="sale_sub_postbilling_list" model="ir.ui.view">
+        <field name="name">Post billed invoices list</field>
+        <field name="model">sale.subscription</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_view_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='recurring_next_date']" position="before">
+                <field name="post_billed"/>-->
+<!--                <field name="hosted_telephony" attrs="{'invisible':[('post_billed','=',False)]}"/>-->
+  <!--          </xpath>
+        </field>
+    </record>-->
+
+
+    <!--<record id="sale_sub_postbilling_template_form" model="ir.ui.view">
+        <field name="name">Hosted telephony form</field>
+        <field name="model">sale.subscription.template</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_template_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/notebook/page[@name='invoicing']/group[@name='invoicing']/group/field[@name='payment_mode']" position="after">
+                <field name="post_billed"/>
+            </xpath>
+        </field>
+    </record>-->
+
+    <!--<record id="sale_sub_postbilling_template_list" model="ir.ui.view">
+        <field name="name">Hosted telephony list</field>
+        <field name="model">sale.subscription.template</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_template_view_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='recurring_rule_type']" position="after">
+                <field name="post_billed"/>
+            </xpath>
+        </field>
+    </record>-->
+
+
+
+</odoo>
