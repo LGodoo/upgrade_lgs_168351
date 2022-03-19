@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <record id="msgid_payment_view" model="ir.ui.view">
+        <field name="name">MsgID payment view</field>
+        <field name="model">account.payment</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sdd_mandate_id']" position="after">
+                <field name="msg_id"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="account_payment_sepa_import_view" model="ir.ui.view">
+        <field name="name">Import Payment Sepa</field>
+        <field name="model">payment.sepa.import</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <form>
+                <div name="info_alert" class="alert alert-info" role="alert">
+                    Select either a SEPA XML, or a ZIP folder containing SEPA XMLs<br/>
+                </div>
+                <group name="file">
+                    <field name="data_file"/>
+                </group>
+
+                <footer>
+                    <button name="import_file" string="Import" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_account_payment_sepa_import" model="ir.actions.act_window">
+        <field name="name">Import SEPA Payments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">payment.sepa.import</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="account_payment_sepa_import_view"/>
+    </record>
+    
+
+    <menuitem id="menu_account_payment_sepa_import"
+              parent="account.menu_finance_receivables"
+              action="action_account_payment_sepa_import" sequence="22"/>
+
+</odoo>

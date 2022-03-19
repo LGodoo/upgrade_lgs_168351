@@ -1,0 +1,2 @@
+-import ssd.mandate 
+-changed the way mandate naming works to comply with jcc's requirements 12digit+mod/10 of checksum
