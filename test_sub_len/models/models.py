@@ -21,7 +21,7 @@ _logger = logging.getLogger(__name__)
 
 class test_sub_len(models.Model):
     
-    _inherit = "sale.subscription"
+    _inherit = 'sale.subscription'
     
     def _recurring_create_invoice(self, automatic=False):
         auto_commit = self.env.context.get('auto_commit', True)
@@ -38,7 +38,7 @@ class test_sub_len(models.Model):
                       '|', ('stage_category', '=', 'progress'), ('to_renew', '=', True)]
             subscriptions = self.search(domain)
         if subscriptions:
-            _logger.debug("Subscription len '%s': ", subscriptions)
+            _logger.debug('Subscription len '%s': ', subscriptions)
             sub_data = subscriptions.read(fields=['id', 'company_id'])
             for company_id in set(data['company_id'][0] for data in sub_data):
                 sub_ids = [s['id'] for s in sub_data if s['company_id'][0] == company_id]
