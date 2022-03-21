@@ -16,7 +16,7 @@
             </t>
             <div class="page">
                 <t t-if="account_type == 'receivable'">
-                    <h2>Statement of Account (Customer)</h2>
+                    <h2>Statement of Account(Customer)</h2>
                 </t>
                 <t t-else="">
                     <h2 >Statement of Account (Vendor)</h2>
